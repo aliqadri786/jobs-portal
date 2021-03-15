@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_15_083943) do
+ActiveRecord::Schema.define(version: 2021_03_15_100755) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -92,13 +92,23 @@ ActiveRecord::Schema.define(version: 2021_03_15_083943) do
     t.string "link_to_apply"
     t.string "company_name"
     t.string "company_website"
-    t.string "role_type"
     t.string "compensation_range"
+    t.string "compensation_type"
+    t.string "estimated_hours"
     t.boolean "remote", default: false
     t.string "years_of_experience"
+    t.string "status", default: "pending"
+    t.datetime "published_at"
+    t.datetime "featured_until"
+    t.boolean "featured", default: false
+    t.integer "price"
+    t.string "headquarters"
+    t.string "upsell_type"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_jobs_on_slug", unique: true
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
